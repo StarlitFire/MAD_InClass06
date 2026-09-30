@@ -1,3 +1,6 @@
+> https://github.com/StarlitFire/MAD_InClass06.git
+
+
 Measure and improve your smile arc
 On your running smiley, create a balanced smile arc and explain how your measurements keep the face responsive on a phone screen.
 
