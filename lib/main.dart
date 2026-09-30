@@ -1,5 +1,5 @@
 // In-Class Activity 06 — Drawing with Flutter
-// Student: [Your Full Name]
+// Student: Dominic Phong Le
 // Date: September 26, 2026
 
 import 'package:flutter/material.dart';
@@ -66,6 +66,8 @@ class _DrawingPlaygroundState extends State<DrawingPlayground> {
   }
 }
 
+enum Emotion { classic, sleepy, surprised }
+
 class SmileyPainter extends CustomPainter {
   SmileyPainter({required this.mood});
   final double mood;
@@ -75,7 +77,7 @@ class SmileyPainter extends CustomPainter {
     final c = Offset(size.width / 2, size.height / 2);
     final r = size.shortestSide * 0.40;
 
-    // 1) Face
+    // 1) Face (Blue if mood < .35, Yellow if Mood .35-.7, Amber if mood > 0.7)
     final faceColor = (mood < 0.35)
         ? Colors.blue
         : (mood < 0.7)
@@ -129,12 +131,6 @@ class SmileyPainter extends CustomPainter {
       ..strokeWidth = 5
       ..strokeCap = StrokeCap.square;
 
-    final hatBotPaint = Paint()
-      ..color = const Color.fromARGB(255, 64, 4, 230)
-      ..style = PaintingStyle.fill
-      ..strokeWidth = 5
-      ..strokeCap = StrokeCap.square;
-
     final hatTopRect = Rect.fromCenter(
       center: Offset(c.dx, c.dy - r * 1.25),
       width: r * 0.75,
@@ -147,7 +143,7 @@ class SmileyPainter extends CustomPainter {
       height: r * 0.5,
     );
 
-    canvas.drawRect(hatBottomRect, hatBotPaint);
+    canvas.drawRect(hatBottomRect, hatPaint);
     canvas.drawRect(hatTopRect, hatPaint);
   }
 
